@@ -2,8 +2,14 @@ import GameModel from "../models/game.model.js";
 
 class GameController {
   async findAll(req, res) {
+    const {name, platform} = req.query;
+
+console.log("Nome", name);
+console.log("plataforma", platform);
+
+
     try {
-      const games = await GameModel.findAll();
+      const games = await GameModel.findAll(name, platform);
 
       return res.status(200).json(games);
     } catch (error) {
@@ -44,3 +50,4 @@ class GameController {
 }
 
 export default new GameController();
+;
